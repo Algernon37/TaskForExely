@@ -1,0 +1,447 @@
+@import "variables"
+
+@font-face
+    font-family: "Open Sans"
+    src: url("../fonts/open_sans/opensans-regular.woff2") format("woff2")
+    src: url("../fonts/open_sans/opensans-regular.woff") format("woff")
+    font-weight: 400
+    font-style: normal
+
+@font-face
+    font-family: "Open Sans"
+    src: url("../fonts/open_sans/opensans-semibold.woff2") format("woff2")
+    src: url("../fonts/open_sans/opensans-semibold.woff") format("woff")
+    font-weight: 600
+    font-style: normal
+
+@font-face
+    font-family: "Open Sans"
+    src: url("../fonts/open_sans/opensans-bold.woff2") format("woff2")
+    src: url("../fonts/open_sans/opensans-bold.woff") format("woff")
+    font-weight: 700
+    font-style: normal
+
+@font-face
+    font-family: "Roboto"
+    src: url("../fonts/roboto/roboto-medium.woff2") format("woff2")
+    src: url("../fonts/roboto/roboto-medium.woff") format("woff")
+    font-weight: 500
+    font-style: normal
+
+@font-face
+    font-family: "Roboto"
+    src: url("../fonts/roboto/roboto-bold.woff2") format("woff2")
+    src: url("../fonts/roboto/roboto-bold.woff") format("woff")
+    font-weight: 700
+    font-style: normal
+
+*,
+*::before,
+*::after
+    padding: 0
+    margin: 0
+    border: 0
+    box-sizing: border-box
+
+html
+    display: flex
+    min-height: 100vh
+    justify-content: center
+    align-items: center
+
+    background-image: linear-gradient(rgba(222, 237, 255, 0.6), rgba(166, 204, 250, 0.5)), url("../images/main__background/background.svg")
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    background-attachment: fixed
+
+.wrapper
+    display: flex
+    min-height: 100vh
+    justify-content: center
+    align-items: center
+
+    overflow: hidden
+
+.discount
+    position: absolute
+    top: 24px
+    left: 24px
+    z-index: 6
+
+    display: flex
+    align-items: center
+
+    opacity: 0
+    visibility: hidden
+
+    &__inner
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        flex-wrap: wrap
+        max-width: 190px
+        padding: 4px 4px 5px 16px
+        box-sizing: border-box
+
+        background: $accent
+        border-radius: 3px 0 0 3px
+        transition: opacity 0.3s ease, visibility 0.3s ease
+
+        &-text
+            flex: 1
+            z-index: 6
+
+            font-family: "Roboto", "sans-serif"
+            font-size: 14px
+            line-height: 21px
+            font-weight: 700
+            color: #ffffff
+
+    &__img
+        width: auto
+        height: 100%
+
+.reserved
+    display: none
+
+.rooms
+    display: flex
+    flex-direction: column
+    max-width: 1180px
+    margin: 0 auto
+    box-sizing: content-box
+    justify-content: center
+    align-items: center
+    gap: 33px
+    padding: 27px 34px 39px 34px
+
+    &__title
+        font-family: "Roboto", "sans-serif"
+        font-size: 36px
+        line-height: 55px
+        font-weight: 500
+        text-align: center
+        text-transform: uppercase
+
+    &__items
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        gap: 32px
+
+    &__item
+        position: relative
+
+        display: flex
+        flex-wrap: wrap
+        flex-direction: column
+        flex-grow: 1
+        justify-content: end
+        box-sizing: border-box
+        min-width: 372px
+        min-height: 372px
+
+        background-image: linear-gradient(rgba(10, 34, 64, 0.1), rgba(10, 34, 64, 1))
+        background-size: cover
+        background-position: center
+        border-radius: 10px
+
+        transition: box-shadow 0.3s ease
+
+        &:hover
+            box-shadow: $shadow
+
+        &:hover .discount
+            opacity: 1
+            visibility: visible
+
+        &--reserved
+            box-shadow: none
+
+            .reserved
+
+                &.visible
+                    display: flex
+
+                &::before
+                    content: ""
+                    position: absolute
+                    top: 0
+                    left: 0
+                    z-index: 7
+
+                    width: 100%
+                    height: 100%
+
+                    background-color: rgba(255, 255, 255, 0.4)
+
+                    border-radius: 10px
+
+            .reserved__inner
+                position: absolute
+                bottom: 0
+                left: 0
+                z-index: 8
+
+                display: flex
+                width: 100%
+                min-height: 96px
+                justify-content: center
+                align-items: center
+                flex-direction: column
+                padding: 10px
+
+                background-color: $secondary
+                color: #ffffff
+
+                border-radius: 0 0 10px 10px
+
+            .discount
+                display: none
+
+            .reserved__title,
+            .reserved__text
+                font-family: "Open Sans", "sans-serif"
+                font-size: 14px
+                line-height: 21px
+                font-weight: 400
+                text-align: center
+
+            .reserved__payment
+                font-weight: 600
+                color: $primary-color2
+                text-decoration: none
+
+                &:hover
+                    text-decoration: underline
+
+                &:active
+                    color: #ff97b0
+                    text-decoration: none
+
+        &-img
+            position: absolute
+            z-index: -1
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+
+            background-color: #2d507c
+            border-radius: 10px
+
+            object-fit: cover
+
+        &-body
+            position: relative
+            z-index: 2
+
+            padding: 24px
+
+        &-info
+            padding-bottom: 20px
+
+            color: #ffffff
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+
+        &-title
+            max-width: 100%
+
+            font-family: "Roboto", "sans-serif"
+            font-size: 24px
+            line-height: 32px
+            font-weight: 700
+
+            margin-bottom: 9px
+
+            &-link
+                color: #ffffff
+
+                text-decoration: none
+
+                &:hover
+                    text-decoration: underline
+
+                &:active
+                    opacity: 0.5
+                    text-decoration: none
+
+                &:active .rooms__item
+                    box-shadow: $shadow
+
+        &-text
+            font-family: "Open Sans", "sans-serif"
+            font-size: 16px
+            line-height: 24px
+            font-weight: 400
+
+        &-bottom
+            display: flex
+            align-items: center
+            gap: 27px
+            margin-top: 17px
+
+        &-price
+            font-family: "Open Sans", "sans-serif"
+            font-size: 16px
+            line-height: 24px
+            font-weight: 700
+            color: #ffffff
+
+            &-pretext
+                font-family: "Roboto", "sans-serif"
+                font-size: 19px
+                font-weight: 700
+                color: #ffffff
+
+            &-value
+                font-family: "Roboto", "sans-serif"
+                font-size: 24px
+                line-height: 32px
+                font-weight: 700
+                color: $primary-color2
+
+            &-currency
+                margin-left: 6px
+
+                font-family: "Roboto", "sans-serif"
+                font-size: 23px
+                line-height: 32px
+                font-weight: 400
+                color: #999999
+
+        &-btn
+            min-height: 48px
+            width: 180px
+            padding: 11px 24px 13px 25px
+
+            font-family: "Open Sans", "sans-serif"
+            font-size: 16px
+            line-height: 24px
+            font-weight: 700
+            color: #ffffff
+
+            background-color: $primary-color
+            border-radius: 5px
+            border: none
+            cursor: pointer
+
+        &-btn:hover
+            background-color: $primary-color3
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+
+        &-btn:active
+            color: #f9637c
+
+            background-color: $primary-color3
+
+    .rooms__item.no-border .rooms__item-info
+        border: 0
+
+@media (min-width: 768px) and (max-width: 1279px)
+    .rooms
+        max-width: 700px
+        gap: 26px
+
+        &__items
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            justify-items: center
+            gap: 37px 28px
+
+        &__item
+            min-width: 336px
+            min-height: 420px
+
+            &-bottom
+                display: flex
+                flex-direction: column
+                align-items: start
+                margin-top: 16px
+                gap: 16px
+
+            &-btn
+                width: 100%
+
+            &:nth-last-child(1):nth-child(odd)
+                grid-column: span 2
+                width: 336px
+
+            &.reserved,
+            .reserved-info
+                min-height: 155px
+
+        .reserved__inner
+            min-height: 161px
+
+@media (min-width: 320px) and (max-width: 767px)
+    .rooms
+        max-width: 288px
+        gap: 24px
+        padding: 24px 16px 49px 16px
+
+        &__title
+            font-size: 24px
+            line-height: 32px
+            font-weight: 700
+
+        &__items
+            display: grid
+            justify-items: center
+            grid-template-columns: repeat(1, 1fr)
+            gap: 32px
+
+        &__item
+            min-width: 288px
+            min-height: 347px
+
+            border-radius: 13px
+
+            &-title
+                font-size: 20px
+                line-height: 26px
+
+            &-text
+                font-size: 14px
+                line-height: 21px
+
+            &-body
+                padding: 21px
+
+            &-btn
+                min-height: 42px
+                width: 100%
+                padding: 8px 64px 10px 67px
+
+                font-size: 14px
+
+            &-bottom
+                display: flex
+                flex-direction: column
+                align-items: start
+                gap: 16px
+                margin-top: 18px
+
+            &.reserved,
+            .reserved-info
+                min-height: 149px
+
+            &-price
+                font-size: 14px
+                line-height: 21px
+
+                &-pretext
+                    font-size: 17px
+                    line-height: 24px
+
+                &-value
+                    font-size: 20px
+                    line-height: 32px
+
+                &-currency
+                    line-height: 32px
+                    font-size: 20px
+
+        .reserved__inner
+            min-height: 149px
