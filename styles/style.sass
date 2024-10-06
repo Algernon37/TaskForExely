@@ -147,6 +147,7 @@ html
         border-radius: 10px
 
         transition: box-shadow 0.3s ease
+        overflow: hidden
 
         &:hover
             box-shadow: $shadow
@@ -156,7 +157,9 @@ html
             visibility: visible
 
         &--reserved
-            box-shadow: none
+
+            &:hover
+                box-shadow: none
 
             .reserved
 
@@ -339,6 +342,7 @@ html
     .rooms__item.no-border .rooms__item-info
         border: 0
 
+
 @media (min-width: 768px) and (max-width: 1279px)
     .rooms
         max-width: 700px
@@ -367,10 +371,6 @@ html
             &:nth-last-child(1):nth-child(odd)
                 grid-column: span 2
                 width: 336px
-
-            &.reserved,
-            .reserved-info
-                min-height: 155px
 
         .reserved__inner
             min-height: 161px
@@ -422,10 +422,6 @@ html
                 align-items: start
                 gap: 16px
                 margin-top: 18px
-
-            &.reserved,
-            .reserved-info
-                min-height: 149px
 
             &-price
                 font-size: 14px
